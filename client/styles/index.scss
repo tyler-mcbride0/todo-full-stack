@@ -359,6 +359,21 @@ html .clear-completed:active {
   width: 100%;
 }
 
+.heading-task {
+  width: 70%;
+  padding-left: 5px;
+  text-align: left;
+}
+.heading-priority {
+  width: 10%;
+  text-align: center
+}
+.heading-status {
+  border: solid;
+  width: 20%;
+  text-align: right;
+}
+
 .table-task {
   width: 70%;
   padding-left: 5px;

@@ -16,6 +16,7 @@ export default function Todos() {
   }
 
   const todos = data
+  console.log(todos)
 
   return (
     <div>
@@ -23,9 +24,9 @@ export default function Todos() {
       <table className="todos-list">
         <thead>
           <tr>
-            <th className="table-task">Task</th>
-            <th className="table-priority">Priority</th>
-            <th className="table-status">Status</th>
+            <th className="heading-task">Task</th>
+            <th className="heading-priority">Priority</th>
+            <th className="heading-status">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +34,9 @@ export default function Todos() {
             <tr key={todo.id}>
               <td className="table-task">{todo.task}</td>
               <td className="table-priority">{todo.priority}</td>
-              <td className="table-status">Status: </td>
+              <td className="table-status">
+                {todo.is_completed === false ? 'Complete' : 'Incomplete'}
+              </td>
             </tr>
           ))}
         </tbody>
