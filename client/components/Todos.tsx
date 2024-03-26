@@ -16,7 +16,6 @@ export default function Todos() {
   }
 
   const todos = data
-  console.log(todos)
 
   return (
     <div>
@@ -24,6 +23,7 @@ export default function Todos() {
       <table className="todos-list">
         <thead>
           <tr>
+            <th>ID</th>
             <th className="heading-task">Task</th>
             <th className="heading-priority">Priority</th>
             <th className="heading-status">Status</th>
@@ -32,6 +32,7 @@ export default function Todos() {
         <tbody>
           {todos.map((todo) => (
             <tr key={todo.id}>
+              <td>{todo.id}</td>
               <td className="table-task">{todo.task}</td>
               <td className="table-priority">{todo.priority}</td>
               <td className="table-status">

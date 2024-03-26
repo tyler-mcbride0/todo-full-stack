@@ -5,3 +5,7 @@ export interface Todo {
   is_completed: boolean
   priority: number
 }
+
+export interface Id {
+  id: number
+}

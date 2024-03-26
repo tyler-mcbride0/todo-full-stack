@@ -43,9 +43,9 @@ router.post('/', async (req, res) => {
 
 // DELETE /api/v1/todos/:id
 
-router.delete('/:id', async (req, res)=> {
+router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
-  try{
+  try {
     await db.removeTodo(id)
     res.sendStatus(200)
   } catch (error) {

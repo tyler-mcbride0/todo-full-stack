@@ -1,26 +1,27 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
-import { addTodo } from '../apis/apiclient'
+import { removeTodo } from '../apis/apiclient'
 
-function AddTodo() {
-  const [newTodo, setNewTodo] = useState('')
+function DeleteTodo() {
+  const [deleteTodo, setDeleteTodo] = useState('')
 
   const queryClient = useQueryClient()
   const mutation = useMutation({
-    mutationFn: (input) => addTodo(input),
+    mutationFn: (input) => removeTodo(input),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] })
     },
   })
 
   const handleChange = (e: React.ChangeEvent) => {
-    setNewTodo(e.target.value)
+    setDeleteTodo(e.target.value)
+    console.log(deleteTodo)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    mutation.mutate({ task: newTodo })
-    setNewTodo('')
+    mutation.mutate({ id: deleteTodo })
+    setDeleteTodo('')
   }
 
   return (
@@ -28,14 +29,13 @@ function AddTodo() {
       <form onSubmit={handleSubmit}>
         <input
           className="new-todo"
-          placeholder="What needs to be done?"
-          autoFocus={true}
+          placeholder="What needs to be deleted?"
           onChange={handleChange}
-          value={newTodo}
+          value={deleteTodo}
         />
       </form>
     </>
   )
 }
 
-export default AddTodo
+export default DeleteTodo
