@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-// DELETE /api/v1/todos
+// DELETE /api/v1/todos/:id
 
 router.delete('/:id', async (req, res)=> {
   const id = Number(req.params.id)
