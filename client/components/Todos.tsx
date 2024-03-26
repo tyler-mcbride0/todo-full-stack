@@ -17,6 +17,10 @@ export default function Todos() {
 
   const todos = data
 
+  const handleDoubleClick = (e) => {
+    console.log('doubleclicked', e)
+  }
+
   return (
     <div>
       <h2>TODO LIST</h2>
@@ -27,16 +31,20 @@ export default function Todos() {
             <th className="heading-task">Task</th>
             <th className="heading-priority">Priority</th>
             <th className="heading-status">Status</th>
+            <th className="heading-status">Active</th>
           </tr>
         </thead>
         <tbody>
           {todos.map((todo) => (
-            <tr key={todo.id}>
+            <tr onDoubleClick={handleDoubleClick} key={todo.id}>
               <td>{todo.id}</td>
               <td className="table-task">{todo.task}</td>
               <td className="table-priority">{todo.priority}</td>
               <td className="table-status">
-                {todo.is_completed === false ? 'Complete' : 'Incomplete'}
+                {todo.is_completed === false ? '✔' : '❌'}
+              </td>
+              <td className="table-status">
+                {todo.is_active === false ? '✔' : '❌'}
               </td>
             </tr>
           ))}
