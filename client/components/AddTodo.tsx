@@ -29,9 +29,9 @@ function AddTodo() {
         <input
           className="new-todo"
           placeholder="What needs to be done?"
-          autoFocus={true}
           onChange={handleChange}
           value={newTodo}
+          aria-label="Add new todo"
         />
       </form>
     </>

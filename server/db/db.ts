@@ -39,6 +39,10 @@ export function changePriorty(id: number, priority: number) {
   return db('todos').where({ id }).update({ priority })
 }
 
+export function changeName(id: number, task: string) {
+  return db('todos').where({ id }).update({ task })
+}
+
 export function getActive(): Promise<Todo[]> {
   return db('todos').where('is_active', 1)
 }

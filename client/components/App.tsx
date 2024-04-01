@@ -11,7 +11,6 @@ function App() {
 
         <AddTodo />
         <Todos />
-        <DeleteTodo />
       </header>
       <section className="main"></section>
       <footer className="footer"></footer>

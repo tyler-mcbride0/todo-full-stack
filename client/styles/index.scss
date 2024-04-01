@@ -387,8 +387,43 @@ html .clear-completed:active {
   text-align: center
 }
 
+.taskParent{
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
 
+.flexyTask{
+  grid-area: 1 / 1 / 2 / 10; 
+}
+.flexyButton{
+  grid-area: 1 / 10 / 2 / 11; 
+  justify-content: end;
+}
 
+.edit {
+  background-color: #525252;
+  height: 60%;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 200px;
+  line-height: calc(60% - 4px);
+  box-sizing: border-box;
+}
+
+.edit:hover {
+  background-color: #fff;
+  color: #525252;
+}
 
 /*
   Hack to remove background from Mobile Safari.

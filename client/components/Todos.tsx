@@ -1,5 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchTodos } from '../apis/apiclient'
+import { TodoActive } from './TodoActive'
+import { TodoStatus } from './TodoStatus'
+import { TodoPriority } from './TodoPriority'
+import { TodoTask } from './TodoTask'
+import DeleteTodo from './DeleteTodo'
 
 export default function Todos() {
   const { isPending, isError, data } = useQuery({
@@ -14,40 +19,34 @@ export default function Todos() {
   if (isError) {
     return <>Oops! there was an error</>
   }
-
   const todos = data
-
-  const handleDoubleClick = (e) => {
-    console.log('doubleclicked', e)
-  }
 
   return (
     <div>
       <h2>TODO LIST</h2>
+
       <table className="todos-list">
+        <caption>Doubleclick the Active/Status fields to change</caption>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Del</th>
             <th className="heading-task">Task</th>
             <th className="heading-priority">Priority</th>
-            <th className="heading-status">Status</th>
             <th className="heading-status">Active</th>
+            <th className="heading-status">Status</th>
           </tr>
         </thead>
         <tbody>
           {todos.map((todo) => (
-            <tr onDoubleClick={handleDoubleClick} key={todo.id}>
-              <td>{todo.id}</td>
-              <td className="table-task">{todo.task}</td>
-              <td className="table-priority">{todo.priority}</td>
-              <td className="table-status">
-                {todo.is_completed === false ? '✔' : '❌'}
-              </td>
-              <td className="table-status">
-                {todo.is_active === false ? '✔' : '❌'}
-              </td>
+            <tr key={todo.id}>
+              <DeleteTodo todo={todo} />
+              <TodoTask todo={todo} />
+              <TodoPriority todo={todo} />
+              <TodoActive todo={todo} />
+              <TodoStatus todo={todo} />
             </tr>
           ))}
+          <tr></tr>
         </tbody>
       </table>
     </div>
